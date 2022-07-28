@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+
+      <h1 class="text-center display-4 mb-3">Edit Contact</h1>
+
+      <% if(typeof error != 'undefined')  {%> 
+        <div class="alert alert-danger" role="alert">
+          <ul>
+            <% error.forEach(function(err) { %>
+              <li><%= err.msg %></li>
+            <% }) %>
+          </ul>
+        </div>
+      <% } %> 
+      <form action="/contact?_method=PUT" method="POST">
+
+        <input type="hidden" name="_id" id="_id" required value="<%= contact._id %>">
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" name="name" id="name" placeholder="Nasheh" required value="<%= contact.name %>">
+          <label for="name">Nama</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" name="phone" id="phone" placeholder="08123456789" required value="<%= contact.phone %>">
+          <label for="phone">Nomor HP</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required value="<%= contact.email %>">
+          <label for="email">Email</label>
+        </div>
+
+        <button type="submit" class="btn btn-success rounded-pill"><i class="bi bi-plus-circle"></i> Update Contact</button>
+      </form>
+
+    </div>
+  </div>
